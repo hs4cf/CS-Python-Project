@@ -6,7 +6,10 @@ import pandas as pd
 df = pd.read_csv('hate_crimes.csv',header=0, encoding = "ISO-8859-1")
 
 #Take user input
-stateOfInterest= input("Which state's data would you like to see?")
+input_state = input("Which state's data would you like to see? ")
+lower_input = input_state.lower()
+stateOfInterest = lower_input.capitalize()
+
 df[df['state'].isin([stateOfInterest])] 
 
 
