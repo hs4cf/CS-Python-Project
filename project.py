@@ -65,3 +65,8 @@ plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 plt.scatter(X_test, y_test,  color='gray')
 plt.plot(X_test, y_pred, color='red', linewidth=2)
 plt.show()
+
+
+#Take user input
+stateOfInterest= input("Which state's data would you like to see?")
+df[df['state'].isin([stateOfInterest])] 
