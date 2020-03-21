@@ -1,0 +1,24 @@
+#Want to import our csv data into pandas dataframe
+import pandas as pd 
+data = pd.read_csv('hate_crimes.csv')
+data
+
+#Useful if we want to compare numbers to the average or a certain quartile
+data.describe()
+
+#Can compare attributes/columns of top 10 and last 10 based on sorting certain rows
+data.sort_values(by='hate_crimes_per_100k_splc').head(10)
+data.sort_values(by='hate_crimes_per_100k_splc').tail(10) 
+
+data.sort_values(by='avg_hatecrimes_per_100k_fbi').head(10)
+data.sort_values(by='avg_hatecrimes_per_100k_fbi').tail(10)
+
+data.sort_values(by='gini_index').head(10)
+data.sort_values(by='gini_index').tail(10)
+
+# Can also select certain columns and sort them
+dfIncome_splc = data[['state','median_household_income','hate_crimes_per_100k_splc']].sort_values(by='hate_crimes_per_100k_splc')
+dfIncome_splc
+
+#example: just want to look at income data above the mean of splc hate crimes
+dfIncome_splc[dfIncome_splc['hate_crimes_per_100k_splc'] > 0.304093]
