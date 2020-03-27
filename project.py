@@ -11,7 +11,13 @@ from sklearn import metrics
 # Read the csv file:
 url = 'https://raw.githubusercontent.com/hs4cf/CS-Python-Project/master/hate_crimes.csv'
 dataset = pd.read_csv(url, error_bad_lines=False)
-#df
+
+#replace null values with means
+#https://towardsdatascience.com/data-cleaning-with-python-and-pandas-detecting-missing-values-3e9c6ebcf78b
+mean_splc = dataset['hate_crimes_per_100k_splc'].mean()
+dataset['hate_crimes_per_100k_splc'].fillna(mean_splc, inplace=True)
+mean_fbi = dataset['avg_hatecrimes_per_100k_fbi'].mean()
+dataset['avg_hatecrimes_per_100k_fbi'].fillna(mean_fbi, inplace=True)
 
 #dataset = pd.read_csv('hate_crimes.csv',header=0, encoding = "ISO-8859-1")
 df = pd.read_csv('hate_crimes.csv',header=0, encoding = "ISO-8859-1")
